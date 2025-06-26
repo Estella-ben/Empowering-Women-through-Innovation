@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estella - Empowering Women Through Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #764ba2;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .intro {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #764ba2;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #764ba2;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            background: white;
+            margin: 20px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #764ba2;
+        }
+
+        .section-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Problem & Solution */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .problem, .solution {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #764ba2;
+        }
+
+        .problem h3, .solution h3 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .stats h4 {
+            margin-bottom: 1rem;
+        }
+
+        .stat-item {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* Prototype Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #764ba2;
+        }
+
+        .roadmap {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #764ba2;
+            z-index: 1;
+        }
+
+        .roadmap-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid #764ba2;
+            position: relative;
+            z-index: 2;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        /* Feedback Section */
+        .feedback-table {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .feedback-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .feedback-row:last-child {
+            border-bottom: none;
+        }
+
+        .feedback-header {
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        /* Visual Portfolio */
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .visual-item {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .quote-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            font-style: italic;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Blog Section */
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .blog-post {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background: #764ba2;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .problem-solution {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .roadmap::before {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Estella</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#problem">Problem & Solution</a></li>
+                    <li><a href="#prototype">Prototype</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                    <li><a href="#visual">Visual Journey</a></li>
+                    <li><a href="#blog">Updates</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Empowering Women Through Innovation</h1>
+            <p class="tagline">Bridging the gender gap in leadership, one solution at a time.</p>
+            <p class="intro">Hi, I'm Estella — a passionate and driven entrepreneur, aspiring software architect, and advocate for women's leadership in tech and business. With a strong foundation in communication, teamwork, and software development, I'm on a mission to use innovation and empathy to solve real-world problems.</p>
+            <div class="cta-buttons">
+                <a href="#prototype" class="btn btn-primary">View the Prototype</a>
+                <a href="#problem" class="btn btn-secondary">Explore My Journey</a>
+                <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution Section -->
+    <section id="problem" class="section">
+        <div class="container">
+            <div class="section-icon">🧩</div>
+            <h2>Problem & Solution</h2>
+            <div class="problem-solution">
+                <div class="problem fade-in">
+                    <h3>The Problem</h3>
+                    <p>Women continue to be significantly underrepresented in leadership roles across many industries, especially in technology and entrepreneurship. Systemic biases, lack of mentorship, and limited access to leadership training often hinder their advancement.</p>
+                    
+                    <div class="stats">
+                        <h4>Supporting Data:</h4>
+                        <div class="stat-item">📊 Only 28% of managerial positions worldwide are held by women (UN Women, 2024)</div>
+                        <div class="stat-item">🌍 In Africa, women make up less than 20% of executive positions in tech</div>
+                    </div>
+                </div>
+                
+                <div class="solution fade-in">
+                    <h3>My Solution</h3>
+                    <p>I'm developing an interactive, digital mentorship and resource hub that supports emerging women leaders. This platform connects users with mentors, provides leadership training modules, hosts discussion forums, and highlights success stories to inspire and empower.</p>
+                    
+                    <h4>How it works:</h4>
+                    <ul style="margin-top: 1rem;">
+                        <li>Users create profiles to access tailored resources</li>
+                        <li>They can be matched with mentors in their field</li>
+                        <li>They complete goal-oriented leadership challenges</li>
+                        <li>Community forums encourage support and shared learning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prototype Section -->
+    <section id="prototype" class="section">
+        <div class="container">
+            <div class="section-icon">🛠️</div>
+            <h2>Prototype Development</h2>
+            
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">I began by researching user needs through interviews and surveys. Then, I created wireframes to test design ideas. The first prototype was built using Figma and focuses on three core features: mentorship matching, leadership modules, and community engagement.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3>Dashboard</h3>
+                    <p>Personalized space for goal tracking and progress monitoring</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Mentorship Portal</h3>
+                    <p>Matchmaking system connecting mentors and mentees</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📚</div>
+                    <h3>Learning Hub</h3>
+                    <p>Structured leadership training modules with progress tracking</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💬</div>
+                    <h3>Community Forum</h3>
+                    <p>A safe space for discussion, networking, and support</p>
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin: 3rem 0 2rem;">Development Roadmap</h3>
+            <div class="roadmap">
+                <div class="roadmap-item">Ideation</div>
+                <div class="roadmap-item">Research</div>
+                <div class="roadmap-item">Wireframes</div>
+                <div class="roadmap-item">Testing</div>
+                <div class="roadmap-item">Refinement</div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem;"><strong>Tools Used:</strong> Figma, Canva, Google Forms, Notion</p>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="section">
+        <div class="container">
+            <div class="section-icon">💬</div>
+            <h2>User Feedback & Testing</h2>
+            
+            <h3>User Personas</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👩‍🎓</div>
+                    <h4>Ama</h4>
+                    <p>21-year-old computer science student looking for mentorship</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👩‍💼</div>
+                    <h4>Nadia</h4>
+                    <p>Young professional seeking leadership guidance</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👩‍🏫</div>
+                    <h4>Fatima</h4>
+                    <p>Mentor wanting to support rising women leaders</p>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 3rem;">Key Feedback & Actions</h3>
+            <div class="feedback-table">
+                <div class="feedback-row feedback-header">
+                    <div>User Feedback</div>
+                    <div>Action Taken</div>
+                    <div>Result</div>
+                </div>
+                <div class="feedback-row">
+                    <div>"I want a simpler onboarding"</div>
+                    <div>Redesigned sign-up to 3 steps</div>
+                    <div>Faster user registration</div>
+                </div>
+                <div class="feedback-row">
+                    <div>"More African women examples"</div>
+                    <div>Added local leader success stories</div>
+                    <div>Better user connection and trust</div>
+                </div>
+                <div class="feedback-row">
+                    <div>"Need better forum moderation"</div>
+                    <div>Added reporting + moderation features</div>
+                    <div>Safer and more respectful space</div>
+                </div>
+            </div>
+            
+            <div class="quote-card">
+                <p>"User insight is everything — each iteration became more relevant and helpful after integrating real voices and experiences."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Portfolio Section -->
+    <section id="visual" class="section">
+        <div class="container">
+            <div class="section-icon">🎨</div>
+            <h2>Visual Portfolio</h2>
+            
+            <div class="visual-grid">
+                <div class="visual-item">
+                    <h3>📊 Infographics</h3>
+                    <p>Women in leadership statistics and survey results visualization</p>
+                </div>
+                <div class="visual-item">
+                    <h3>🎯 Journey Timeline</h3>
+                    <p>From initial idea to tested prototype development</p>
+                </div>
+                <div class="visual-item">
+                    <h3>📱 UI Screenshots</h3>
+                    <p>Platform interface mockups and user experience flows</p>
+                </div>
+                <div class="visual-item">
+                    <h3>💡 Design Improvements</h3>
+                    <p>Before/after comparisons of design iterations</p>
+                </div>
+            </div>
+            
+            <h3>Design Style Guide</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Colors</h4>
+                    <p>Warm purples and deep blues for empowerment</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h4>Typography</h4>
+                    <p>Clean, bold typefaces for clarity and impact</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h4>Icons</h4>
+                    <p>Inclusive illustrations reflecting diversity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section">
+        <div class="container">
+            <div class="section-icon">🔄</div>
+            <h2>Ongoing Updates</h2>
+            
+            <div class="blog-posts">
+                <div class="blog-post">
+                    <h3>What Inspired Me to Start This Platform</h3>
+                    <p class="blog-date">Latest Update</p>
+                    <p>Exploring the personal journey and motivations behind creating a women's leadership platform.</p>
+                </div>
+                <div class="blog-post">
+                    <h3>Key Feedback from My First 20 Users</h3>
+                    <p class="blog-date">Recent</p>
+                    <p>Insights and learnings from early user testing and feedback sessions.</p>
+                </div>
+                <div class="blog-post">
+                    <h3>Improving the Mentorship Feature</h3>
+                    <p class="blog-date">In Progress</p>
+                    <p>How real user feedback is shaping the mentorship matching algorithm.</p>
+                </div>
+                <div class="blog-post">
+                    <h3>Next Steps: Launch Plans</h3>
+                    <p class="blog-date">Coming Soon</p>
+                    <p>Expanding the prototype and preparing for the official platform launch.</p>
+                </div>
+            </div>
+            
+            <div class="quote-card">
+                <p>"Through this journey, I've learned that solving a real problem takes not just innovation, but empathy, persistence, and the courage to start — even when the odds aren't in your favor."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-icon">📞</div>
+            <h2>About & Contact</h2>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>About Me</h3>
+                    <p>I'm Estella, a software architect in training, a creative problem-solver, and a passionate advocate for empowering women in leadership. This project represents my values, my vision, and the kind of change I want to lead.</p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>Let's Connect</h3>
+                    <form class="contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Have feedback or ideas? Let's collaborate!" rows="4" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <p><strong>📧 Email:</strong> <a href="mailto:denyseestellabenimana@gmail.com" style="color: #764ba2; text-decoration: none;">denyseestellabenimana@gmail.com</a></p>
+                <p><strong>🌐 LinkedIn:</strong> <a href="https://www.linkedin.com/in/benimana-denyse-estella-17462a320" target="_blank" style="color: #764ba2; text-decoration: none;">linkedin.com/in/benimana-denyse-estella-17462a320</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Estella. Empowering women through innovation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+
+        // Add active state to navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
